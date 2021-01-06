@@ -5,12 +5,13 @@
     <title>Speech Detection</title>
   </head>
   <body>
-    <div class="words" contenteditable></div>
-    <button id="reset">Reset Text</button>
+    <div class="container">
+      <div class="words" contenteditable></div>
+      <button id="reset">Reset Text</button>
+    </div>
     <script>
       const resetButton = document.getElementById("reset");
       function hideParagraphs() {
-        recognition.stop;
         var p_list = document.getElementsByTagName("p");
         console.log(p_list);
         for (var i = p_list.length - 1; i >= 0; i--) {
@@ -19,7 +20,6 @@
         }
         console.log(p_list);
         console.log("click");
-        recognition.start;
       }
 
       window.SpeechRecognition =
@@ -96,6 +96,15 @@
         bottom: 0;
         border: 1px solid;
         border-color: transparent #efe4e4;
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      button {
+        height: 20px;
+        align-items: center;
       }
     </style>
   </body>
