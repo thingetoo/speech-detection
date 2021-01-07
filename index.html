@@ -37,14 +37,19 @@
           .map((result) => result[0])
           .map((result) => result.transcript)
           .join("");
-
+        const weatherCalls =
+          [transcript.toLowerCase()].includes("weather") ||
+          [transcript.toLowerCase()].includes("get weather") ||
+          [transcript.toLowerCase()].includes("what's the weather");
         p.textContent = transcript;
 
         if (e.results[0].isFinal) {
           p = document.createElement("p");
           words.appendChild(p);
         }
-        console.log(transcript);
+        if (weatherCalls) {
+          console.log("making API call to get weather...");
+        }
       });
       resetButton.addEventListener("click", hideParagraphs);
       recognition.addEventListener("end", recognition.start);
